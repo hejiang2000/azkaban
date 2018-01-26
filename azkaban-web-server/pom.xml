@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>linkedin.com</groupId>
+        <artifactId>azkaban</artifactId>
+        <version>3.40.0</version>
+    </parent>
+  
+	<artifactId>web-server</artifactId>
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>rpm-maven-plugin</artifactId>
+				<configuration>
+                    <name>${rpm.name}</name>
+                    <version>${rpm.version}</version>
+                    <release>${rpm.release}</release>
+					<copyright>2012, Apache Software Foundation</copyright>
+					<group>Development</group>
+					<description>Maven Recipe: RPM Package.</description>
+					<autoRequires>no</autoRequires>
+					<prefix>/</prefix>
+					<needarch>x86_64</needarch>
+					<mappings>
+						<mapping>
+							<directory>${rpm.directory}/azkaban-web-server</directory>
+							<username>root</username>
+							<groupname>root</groupname>
+							<sources>
+								<source>
+									<location>${project.basedir}/build/install/azkaban-web-server</location>
+								</source>
+							</sources>
+						</mapping>
+					</mappings>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

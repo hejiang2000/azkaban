@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>linkedin.com</groupId>
+	<artifactId>azkaban</artifactId>
+	<version>3.40.0</version>
+	<packaging>pom</packaging>
+
+	<name>parent</name>
+	<url>https://azkaban.github.io/</url>
+
+    <modules>
+        <module>azkaban-web-server</module>
+        <module>azkaban-exec-server</module>
+        <module>azkaban-db</module>
+    </modules>
+    
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <stack.version>2.6.4.0</stack.version>
+        <stack.release>91</stack.release>
+        <rpm.name>azkaban_2_6_4_0_${rpm.release}-${project.artifactId}</rpm.name>
+        <rpm.version>${project.version}.${stack.version}</rpm.version>
+        <rpm.release>${stack.release}</rpm.release>
+        <rpm.directory>/usr/hdp/${stack.version}-${stack.release}</rpm.directory>
+	</properties>
+
+	<build>
+    <pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>rpm-maven-plugin</artifactId>
+				<version>2.1.5</version>
+				<executions>
+					<execution>
+						<phase>none</phase>
+						<goals>
+							<goal>rpm</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>rpm-maven-plugin</artifactId>
+				<configuration>
+                    <name>${rpm.name}</name>
+                    <version>${rpm.version}</version>
+                    <release>${rpm.release}</release>
+					<copyright>2012, Apache Software Foundation</copyright>
+					<group>Development</group>
+					<description>Maven Recipe: RPM Package.</description>
+					<autoRequires>no</autoRequires>
+					<prefix>/</prefix>
+					<needarch>x86_64</needarch>
+					<mappings>
+						<mapping>
+							<directory>${rpm.directory}/azkaban-parent</directory>
+							<username>root</username>
+							<groupname>root</groupname>
+							<sources>
+								<source>
+									<location>${project.basedir}/pom.xml</location>
+								</source>
+							</sources>
+						</mapping>
+					</mappings>
+				</configuration>
+			</plugin>
+		</plugins>
+    </build>
+</project>
