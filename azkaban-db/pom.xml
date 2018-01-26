@@ -25,7 +25,7 @@
 					<description>Maven Recipe: RPM Package.</description>
 					<autoRequires>no</autoRequires>
 					<prefix>/</prefix>
-					<needarch>x86_64</needarch>
+					<needarch>noarch</needarch>
 					<mappings>
 						<mapping>
 							<directory>${rpm.directory}/azkaban-db</directory>
