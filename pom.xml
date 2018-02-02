@@ -18,12 +18,12 @@
     
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <stack.version>2.6.4.0</stack.version>
-        <stack.release>91</stack.release>
-        <rpm.name>azkaban_2_6_4_0_${rpm.release}-${project.artifactId}</rpm.name>
+        <stack.version>8.6.2.18</stack.version>
+        <stack.release>206</stack.release>
+        <rpm.name>azkaban_8_6_2_18_${rpm.release}-${project.artifactId}</rpm.name>
         <rpm.version>${project.version}.${stack.version}</rpm.version>
         <rpm.release>${stack.release}</rpm.release>
-        <rpm.directory>/usr/hdp/${stack.version}-${stack.release}</rpm.directory>
+        <rpm.directory>/usr/ghd/${stack.version}-${stack.release}</rpm.directory>
 	</properties>
 
 	<build>
