@@ -33,7 +33,7 @@
 							<groupname>root</groupname>
 							<sources>
 								<source>
-									<location>${project.basedir}/build/install/azkaban-db/create-all-sql-${project.version}.sql</location>
+									<location>${project.basedir}/build/install/azkaban-db</location>
 								</source>
 							</sources>
 						</mapping>
